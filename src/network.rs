@@ -365,6 +365,9 @@ fn get_access_points_impl(device: &Device) -> Result<Vec<AccessPoint>> {
     // After stopping the hotspot we may have to wait a bit for the list
     // of access points to become available
     while retries < retries_allowed {
+        ::std:🧵:sleep(::std::time::Duration::from_secs(10));
+        let wifi_device = device.as_wifi_device().unwrap();
+        let mut access_points = wifi_device.get_access_points()?;
         let wifi_device = device.as_wifi_device().unwrap();
         let mut access_points = wifi_device.get_access_points()?;
 
